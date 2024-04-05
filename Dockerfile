@@ -1,18 +1,17 @@
-FROM ubuntu:latest
+FROM alpine:3.17
 
-RUN apt-get update && apt-get install -y \
-    netcat \
-    software-properties-common \
-    python3.10 \
-    python3-pip \
+RUN apk add --no-cache \
+    bash \
+    netcat-openbsd \
+    python3 \
+    py3-pip \
     strace \
-    openjdk-17-jdk \
-    golang-go \
-    dnsutils
+    openjdk17-jdk \
+    go \
+    bind-tools
 
-RUN apt-get clean && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
-
-RUN useradd -ms /bin/bash compnet
+RUN adduser -Ds /bin/bash compnet
+RUN sed -i 's/\/bin\/ash/\/bin\/bash/' /etc/passwd
 USER root
 WORKDIR /home/compnet
 
