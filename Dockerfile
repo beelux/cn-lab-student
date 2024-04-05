@@ -11,7 +11,6 @@ RUN apk add --no-cache \
     bind-tools
 
 RUN adduser -Ds /bin/bash compnet
-RUN sed -i 's/\/bin\/ash/\/bin\/bash/' /etc/passwd
 USER root
 WORKDIR /home/compnet
 
