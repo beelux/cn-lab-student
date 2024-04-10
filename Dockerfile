@@ -6,7 +6,7 @@ RUN apk add --no-cache \
     python3 \
     py3-pip \
     strace \
-    openjdk17-jdk \
+    openjdk17-jre-headless \
     go \
     bind-tools
 
